@@ -21,6 +21,7 @@ namespace md5
         {
             sifrele=SifreleM.Md5Sifreleme(textBox2.Text);
             label1.Text = "Oluşturulan Hash..:"+sifrele;
+            textBox1.Text = sifrele;
 
             if (textBox2.Text=="123456")
             {
@@ -36,6 +37,18 @@ namespace md5
         private void textBox2_MouseDown(object sender, MouseEventArgs e)
         {
             textBox2.Text="";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+           
+                label1.Focus();
+            
+        }
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (label1.ContainsFocus && e.Control && e.KeyCode == Keys.C)
+                Clipboard.SetText(label1.Text);
         }
     }
 }
